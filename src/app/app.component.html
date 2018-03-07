@@ -1,0 +1,96 @@
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span><b>Crypto Wallet</b></span>
+  </mat-toolbar-row>
+  
+  <mat-toolbar-row>
+    <span>Balance: {{ balance }}</span>
+    <span class="crypto-spacer"></span>
+    <mat-icon class="crypto-icon">account_circle</mat-icon>
+    <mat-icon class="crypto-icon" (click)="getCurrentBalance()">account_balance</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div>
+  <mat-card class="mat-elevation-z8" style="flex: 1; margin-top: 3vh; margin-bottom: 3vh;">
+    <mat-card-title>Access a Wallet by Address</mat-card-title>
+    <mat-card-subtitle>Enter the wallet address</mat-card-subtitle>
+    <mat-card-content>
+      <form [formGroup]="walletAddressForm" autocomplete="off" novalidate>
+        <mat-form-field style="width:33%">
+          <input matInput placeholder="Wallet Address" formControlName="walletAddress" required>        
+        </mat-form-field>        
+      </form>    
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="assignWalletAddress()">
+        <mat-icon aria-label="Assign a wallet adddress">account_circle</mat-icon> Assign
+      </button>    
+    </mat-card-actions>  
+  </mat-card>  
+</div>
+
+<div>
+  <mat-card class="mat-elevation-z8" style="flex: 1' margin-top: 3vh; margin-bottom: 3vh;">
+    <mat-card-title>Send Coins</mat-card-title>
+    <mat-card-subtitle>Enter the receiver's wallet address & the coin amount</mat-card-subtitle>
+    <mat-card-content>
+      <form [formGroup]="sendCoinsForm" autocomplete="off" novalidate>
+        <mat-form-field style="width: 33%">
+          <input matInput placeholder="Receiver Address"  formControlName="receiverAddress" required>
+        </mat-form-field>
+        <mat-form-field style="width: 33%">
+          <input matInput placeholder="Transaction Amount" formControlName="transactionAmount" required>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="sendTransaction()">
+        <mat-icon aria-label="Send Transaction">file_upload</mat-icon> Send
+      </button>
+    </mat-card-actions>    
+  </mat-card>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<div>
+  <h2>
+    Here is our current blockchain:
+  </h2>
+  {{ blockchain }}
+</div>
+<div>
+  <h2>
+    Blockchain State:
+  </h2>  
+  <div *ngIf="cryptoSvc.cryptoChain.isChainValid; else invalidBlockchain">
+    Chain is in a <b>valid</b> state
+  </div>
+  <ng-template #invalidBlockchain> Chain is in an <b>invalid</b> state </ng-template>
+</div>
+-->
